@@ -1,0 +1,264 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+
+:root { 
+    --main-color:  #FEBE10;
+    --secondary-color: #cc0000;
+    --text-color: white;
+    --background-color: #020307;
+    --box-shadow: 0px 15px 25px rgba(0,0,0,0.08);
+    --transition: all 0.5s ease;
+    --font-base: "Poppins", sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-base);
+}
+
+body {
+    min-height: 100vh;
+    background: url('../assets/images/movie-posters/dune-ls-poster.jpg') no-repeat; /* Use forward slashes for URLs */
+    background-size: cover;
+    background-position: center;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: transparent;
+    padding: 30px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    transition: padding-top 0.4s ease-in-out, background 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+
+.header:hover {
+    background: var(--background-color);
+    padding-top: 35px;
+    transform: translateY(0.1px);
+}   
+
+
+.header.menu-open,
+.navbar.menu-open {
+    background-color: var(--background-color);
+    transition: background-color 0.4s ease-in-out;
+}
+
+#close-icon {
+    cursor: pointer;
+}
+
+#close-icon:hover {
+    opacity: 0.7; 
+}
+
+#close-icon:checked ~ .header {
+    transition: none;
+    background-color: transparent;
+}
+
+/* .header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    backdrop-filter: blur(10px);
+    z-index: -1;
+} */
+
+.logo {
+    padding-top: 10px;
+    max-width: 200px;
+    height: auto;
+    align-items: center;
+}
+
+.logo img {
+    width: 100%;
+    height: 100%
+  }
+
+.navbar a {
+    font-size: 1 rem;
+    column-gap: 5rem;
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 5rem;
+    position: relative;
+}
+
+.navbar a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -6px;
+    left: 0;
+    background: var(--main-color);
+    transition: 0.4s ease-in-out;
+}
+
+.navbar a:hover::after, 
+.navbar .home-active::after{
+    width: 100%;
+}
+
+
+#check {
+    display: none;
+}
+
+.icons {
+    position: absolute;
+    right: 5%;
+    font-size: 2.8rem;
+    color: var(--text-color);
+    cursor: pointer;
+    display: none;
+}
+
+.login-container {
+    font-size: 15px;
+    font-weight: 500;
+    column-gap: 0.5rem;
+    list-style-type: none;
+}
+.login-container a{
+    text-decoration: none;
+    color: var(--text-color)
+}
+
+.login_btn{
+    padding: 1rem 2.5rem;
+    color: var(--text-color);
+    background-color: var(--secondary-color);
+    border-radius: 0.6rem;
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+.login_btn:hover { 
+    padding: 1rem 2.5rem;
+    background-color: var(--main-color);
+    color: var(--background-color);
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in;
+}
+
+/* MEDIA QUERIES RESPONSIVE DESIGN */
+
+@media (max-width: 992px) {
+    .header {
+        padding: 1.3rem 5%;
+    }
+
+}
+
+
+@media (max-width: 1334px) {
+    .icons {
+        display: inline-flex;
+    }
+
+    #check:checked~.icons #menu-icon {
+        display: none;
+    }
+
+    .icons #close-icon {
+        display: none;
+    }
+
+    #check:checked~.icons #close-icon {
+        display: block;
+    }
+
+    .navbar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background: var(--background-color);
+        backdrop-filter: blur(10px);
+        overflow: hidden;
+        transition: height 0.3s ease-in-out;
+        text-align: right;
+    }
+
+    #check:checked~.navbar {
+        height: 17.7rem;
+    }
+
+    .navbar a {
+        display: block;
+        font-size: 1.1rem;
+        margin: 1.5rem 0;
+        text-align: center;
+        transform: translateY(-50px);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    #check:checked~.navbar a {
+        transform: translateY(0);
+    }
+
+    .navbar a:hover::after,
+    .navbar .home-active::after {
+        width: 0;
+    }
+
+    #check:checked~.navbar a:hover {
+        color: var(--main-color);
+    }
+    
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    const menuIcon = document.getElementById("menu-icon");
+    const closeIcon = document.getElementById("close-icon");
+    const header = document.querySelector(".header");
+    const navbar = document.querySelector(".navbar");
+
+    // Add event listener to the menu icon
+    menuIcon.addEventListener("click", function() {
+        // Instead of setting background color directly, toggle a class
+        header.classList.toggle("menu-open");
+        navbar.classList.toggle("menu-open");
+    });
+
+    // Add event listener to the close icon
+    closeIcon.addEventListener("click", function() {
+        header.classList.remove("menu-open"); // Remove the menu-open class
+        navbar.classList.remove("menu-open"); // Remove the menu-open class
+    });
+
+    // Add hover effect to menu icon
+    menuIcon.addEventListener("mouseover", function() {
+        if (!header.classList.contains("menu-open")) { // Only change color if menu is closed
+            menuIcon.style.color = "var(--main-color)";
+        }
+    });
+
+    menuIcon.addEventListener("mouseout", function() {
+        menuIcon.style.color = "var(--text-color)";
+    });
+
+    // Add hover effect to close icon
+    closeIcon.addEventListener("mouseover", function() {
+        closeIcon.style.color = "var(--main-color)";
+    });
+
+    closeIcon.addEventListener("mouseout", function() {
+        closeIcon.style.color = "var(--text-color)";
+    });
+});

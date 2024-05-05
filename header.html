@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Popcorn Cinema</title>
+    <link rel="stylesheet" href="css\styles.css" />
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <a href="#" class="logo">
+            <img src="images\icons\popcorn cinema logo.png" alt="popcorn_cinema_logo" />
+        </a>
+
+        <input type="checkbox" id="check" />
+        <label for="check" class="icons">
+            <ion-icon name="menu" id="menu-icon"></ion-icon>
+            <ion-icon name="close" id="close-icon"></ion-icon>
+        </label>
+
+        <nav class="navbar menu-open">
+            <a href="#" class="home-active">Home</a>
+            <a href="#">Movie Schedules</a>
+            <a href="#">Coming Soon</a>
+            <a href="#">About Us</a>
+            <a href="#">Contact Us</a>
+        </nav>
+
+        <!-- <div class="search-box">
+                <a href="#">
+                    <input type="text" placeholder="Search"/>
+                    <ion-icon name="search" class="search-icon"></ion-icon>
+                </a>
+            </div> -->
+
+        <div class="login-container">
+            <div class="login_btn" id="login_btn">Sign In</div>
+        </div>
+    </header>
+
+    <!-- LOG IN POP UP -->
+    <div class="wrapper" id="login-popup">
+        <span class="icon-close" onclick="redirectToIndex()">
+            <ion-icon name="close" style="font-size: 20px"></ion-icon>
+        </span>
+
+        <div class="form-box login">
+            <h2>Log In</h2>
+            <form method="post" action="login_user.php">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                    <input type="email" name="txtemail" required />
+                    <label for="txtemail">Email</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password" name="txtpassword" required />
+                    <label for="txtpassword">Password</label>
+                </div>
+                <button type="submit" name="btnLogin" class="loginbtn">Log In</button>
+                <div class="login-register">
+                    <p>
+                        Don't have an account?
+                        <a href="#" class="register-link">Register</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+
+        <div class="form-box register">
+            <h2>Register</h2>
+            <form method="post" action="register_user.php">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                    <input type="email" name="txtemail" required />
+                    <label for="txtemail">Email</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password" name="txtpassword" required />
+                    <label for="txtpassword">Password</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="person"></ion-icon></span>
+                    <input type="text" name="txtfirstname" required />
+                    <label for="txtfirstname">Firstname</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="person"></ion-icon></span>
+                    <input type="text" name="txtlastname" required />
+                    <label for="txtlastname">Lastname</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="call"></ion-icon></span>
+                    <input type="text" name="txtmobilenumber" required />
+                    <label for="txtmobilenumber">Mobile Number</label>
+                </div>
+                <button type="submit" name="btnRegister" class="loginbtn">
+                    Register
+                </button>
+                <div class="login-register">
+                    <p>
+                        Already have an account?
+                        <a href="#" class="login-link">Login</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <main>
+        <div class="landing_page">
+            <h1 style="font-size: 80px;">BOOK A TICKET NOW!!!</h1>
+        </div>
+    </main>
+
+
+    <footer>
+        <img id="popcorn-cinema-logo" src="images\icons\popcorn cinema logo.png" alt="popcorn_cinema">
+
+        <div class="box1" id="contacts">
+
+            <p>Econar, John Mark</p>
+            <p>Paragoso, Yllana Mikhaila</p>
+
+        </div>
+    </footer>
+
+    <script src="js\script.js"></script>
+</body>
+
+</html>
